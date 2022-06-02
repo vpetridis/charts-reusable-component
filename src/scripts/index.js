@@ -1,3 +1,4 @@
-import '../styles/index.css';
+import "../styles/index.css";
+import { getBars } from "./chartbars";
 
-console.log('webpack starterkit');
+getBars();

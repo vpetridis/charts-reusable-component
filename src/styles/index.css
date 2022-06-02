@@ -79,9 +79,7 @@ hr {
   flex-direction: column;
   margin: 0 auto;
   padding: 4em 1em;
-  display: grid;
-  place-content: center;
-  display: flex;
+  max-width: 450px;
 }
 
 /* CHARTS HEADER */
@@ -111,40 +109,51 @@ hr {
 .charts .weekdays {
   display: flex;
   width: 100%;
-  max-height: 450px;
-  margin-top: 3rem;
-
+  height: 230px;
+  margin-top: 0.1rem;
   flex-flow: nowrap;
   justify-content: space-between;
+  align-items: baseline;
   font-size: var(--txt-small);
 }
-.charts .day {
+
+/* This is the actual bar */
+.weekdays .bar {
   display: flex;
   flex-flow: column;
   justify-content: flex-end;
+  align-items: center;
   position: relative;
   text-align: center;
-  height: 180px;
-}
-.charts .day::before {
-  display: block;
-  content: "";
-  position: relative;
-  height: 140px;
-  max-height: 250px;
+  /* this height must much the @param maxBarHeight on getHeight() */
+  max-height: 150px;
+  /* max-height: 250px; */
   width: 35px;
   background-color: var(--clr-primary);
-
   border-radius: 4px;
+  transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.weekdays .bar:hover {
+  cursor: pointer;
+  opacity: 0.55;
+  filter: brightness(1.1);
 }
 
-.day p {
+.weekdays .highest-amount {
+  background-color: var(--clr-accent) !important;
+}
+.weekdays p {
   color: var(--clr-text-primary-soft);
   margin-top: 0.4rem;
   font-size: var(--txt-small);
+  text-align: center;
 }
 
-/* CHARTS Content*/
+.weekdays .day {
+  align-self: flex-end;
+}
+
+/* CHARTS Bottom Sum*/
 .charts .summarize {
   margin-top: 0.5rem;
   color: red;
