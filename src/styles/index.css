@@ -72,6 +72,12 @@ hr {
   padding: 1.35rem;
   border-radius: var(--brd-radius);
   background-color: var(--clr-bg-primary-soft);
+  transition: all 0.2s ease;
+}
+.charts{
+  @media (max-width: 768px) {
+    width: 365px;
+  }
 }
 /* INIT CHARTS */
 .charts {
@@ -79,7 +85,7 @@ hr {
   flex-direction: column;
   margin: 0 auto;
   padding: 4em 1em;
-  max-width: 450px;
+  max-width: 480px;
 }
 
 /* CHARTS HEADER */
@@ -127,8 +133,8 @@ hr {
   text-align: center;
   /* this height must much the @param maxBarHeight on getHeight() */
   max-height: 150px;
-  /* max-height: 250px; */
-  width: 35px;
+
+
   background-color: var(--clr-primary);
   border-radius: 4px;
   transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -150,7 +156,14 @@ hr {
 }
 
 .weekdays .day {
+  width: 45px;
   align-self: flex-end;
+}
+
+.weekdays .day {
+  @media (max-width: 768px) {
+    width: 34px;
+  }
 }
 
 .weekdays .infobox {
@@ -163,7 +176,7 @@ hr {
   padding: 0.45rem;
   border-radius: 5px;
   text-align: center;
-  transition: all 0.1s ease
+  transition: all 0.1s ease;
 }
 .weekdays .show {
   opacity: 1;

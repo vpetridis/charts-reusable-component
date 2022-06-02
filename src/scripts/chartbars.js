@@ -1,14 +1,16 @@
 const { v4 } = require("uuid");
+const maxBarHeight = 650;
+const totalMonthAmount = 227.33;
 const expenses = [
   {
-    mon: 100,
+    mon: 17.45,
   },
-  { tue: 200 },
-  { wed: 470 },
-  { thu: 180 },
-  { fri: 142 },
-  { sat: 240 },
-  { sun: 130 },
+  { tue: 34.91 },
+  { wed: 52.36 },
+  { thu: 31.07 },
+  { fri: 23.39 },
+  { sat: 43.28 },
+  { sun: 25.48 },
 ];
 export const getBars = () => Array.from(document.querySelectorAll("[data-day]"));
 
@@ -32,17 +34,11 @@ export const findMaxAmount = (expenses) => {
   return highestAmount;
 };
 
-// const compose =
-//   (...fns) =>
-//   (initial) =>
-//     fns.reduce((fn, current) => current(fn), initial);
-
-// const setBarHeight = compose(getSingleBar);
 
 const createInfoElement = (amount) => {
   const infobox = document.createElement("div");
   infobox.className = "infobox";
-  infobox.textContent = amount;
+  infobox.textContent = `$${amount}`;
   const id = v4();
   infobox.setAttribute("data-infobox", id);
   return [id, infobox];
@@ -53,7 +49,7 @@ const highestExpense = findMaxAmount(expenses);
 
 getBars().forEach(async (bar) => {
   const amount = getAmountByDay(bar.getAttribute("data-day"), expenses);
-  const height = getHeight(470, amount, 150);
+  const height = getHeight(totalMonthAmount, amount, maxBarHeight);
   const [id, infobox] = createInfoElement(amount);
   bar.before(infobox);
   bar.addEventListener("mouseover", function showInfo() {
