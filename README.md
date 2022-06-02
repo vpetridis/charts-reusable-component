@@ -1,5 +1,6 @@
 # charts-reusable-component
 
+# [Live demo](https://joyful-sunburst-19fbd5.netlify.app/)
 ## Goals
 
 - Try to make the component as functional as possible in the shortest amount of time. It took me about 6.5 hours, including tests with Jest and refactoring.
