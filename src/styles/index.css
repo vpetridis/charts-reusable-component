@@ -1,0 +1,46 @@
+:root {
+  --clr-primary: hsl(10, 79%, 65%);
+  --clr-accent: hsl(186, 34%, 60%);
+  --clr-bg-primary: hsl(27, 66%, 92%);
+  --clr-bg-primary-soft: hsl(33, 100%, 98%);
+
+  --clr-text-primary: hsl(25, 47%, 15%);
+  --clr-text-primary-soft: hsl(28, 10%, 53%);
+
+  --txt-main: 0.95rem;
+  --txt-small: 0.765rem;
+  --txt-big: 1.45rem;
+  --txt-family: "DM Sans", sans-serif;
+}
+
+body,
+html {
+  width: 100%;
+  min-height: 100%;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--clr-bg-primary);
+  color: var(--clr-text-primary);
+  font-family: var(--txt-family);
+  font-size: var(--txt-main);
+  line-height: 1.1;
+}
+
+p {
+  font-size: var(--txt-main);
+  color: var(--clr-text-primary-soft);
+}
+
+.container {
+  margin: 0 auto;
+  display: grid;
+  place-content: center;
+}
+
+.header {
+  display: flex;
+}
