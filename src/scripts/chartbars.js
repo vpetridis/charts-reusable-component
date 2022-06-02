@@ -1,3 +1,4 @@
+const { v4 } = require("uuid");
 const expenses = [
   {
     mon: 100,
@@ -31,25 +32,40 @@ export const findMaxAmount = (expenses) => {
   return highestAmount;
 };
 
-const compose =
-  (...fns) =>
-  (initial) =>
-    fns.reduce((fn, current) => current(fn), initial);
-const setBarHeight = compose(getSingleBar);
+// const compose =
+//   (...fns) =>
+//   (initial) =>
+//     fns.reduce((fn, current) => current(fn), initial);
+
+// const setBarHeight = compose(getSingleBar);
+
+const createInfoElement = (amount) => {
+  const infobox = document.createElement("div");
+  infobox.className = "infobox";
+  infobox.textContent = amount;
+  const id = v4();
+  infobox.setAttribute("data-infobox", id);
+  return [id, infobox];
+};
+const getElementByAttr = (el, attr) => el.getAttribute(attr);
 
 const highestExpense = findMaxAmount(expenses);
 
 getBars().forEach(async (bar) => {
   const amount = getAmountByDay(bar.getAttribute("data-day"), expenses);
   const height = getHeight(470, amount, 150);
-
+  const [id, infobox] = createInfoElement(amount);
+  bar.before(infobox);
+  bar.addEventListener("mouseover", function showInfo() {
+    infobox.classList.add("show");
+  });
+  bar.addEventListener("mouseleave", function showInfo() {
+    infobox.classList.remove("show");
+  });
   bar.setAttribute("data-amount", amount);
 
-  console.log(Number(bar.getAttribute("data-amount")));
-  Number(bar.getAttribute("data-amount")) === highestExpense &&
-    getSingleBar(bar.getAttribute("data-day")).classList.add("highest-amount");
+  Number(getElementByAttr(bar, "data-amount")) === highestExpense &&
+    getSingleBar(getElementByAttr(bar, "data-day")).classList.add("highest-amount");
 
-  console.log(getSingleBar(bar.getAttribute("data-day")));
-
-  getSingleBar(bar.getAttribute("data-day")).style.setProperty("height", `${height}px`);
+  getSingleBar(getElementByAttr(bar, "data-day")).style.setProperty("height", `${height}px`);
 });

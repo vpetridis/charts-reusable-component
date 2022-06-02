@@ -153,6 +153,21 @@ hr {
   align-self: flex-end;
 }
 
+.weekdays .infobox {
+  opacity: 0;
+  position: relative;
+  width: 120%;
+  transform: translate(-10%, -20%);
+  background-color: var(--clr-text-primary);
+  color: #ffffff;
+  padding: 0.45rem;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.1s ease
+}
+.weekdays .show {
+  opacity: 1;
+}
 /* CHARTS Bottom Sum*/
 .charts .summarize {
   margin-top: 0.5rem;
